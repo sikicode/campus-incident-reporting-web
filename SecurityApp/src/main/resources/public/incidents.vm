@@ -1,0 +1,58 @@
+#set( $title = "Show Incidents" )
+#parse("public/top.vm")
+<head>
+
+    <!--   <link href="img/favicon.ico" rel="shortcut icon"/>
+     -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="../js/index.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/custom.css"/>
+</head>
+#parse("public/navigation.vm")
+
+<body onload="checkIfLoggedIn3()">
+
+    #if ($incidents)
+    <h2>All incidents:</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date And Time</th>
+            <th>Location</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($inc in $incidents)
+            <tr>
+                <td>$inc.dateAndTime</td>
+                <td>$inc.location</td>
+                <td>$inc.description</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+    #end
+
+</body>
+
+#parse("public/bottom.vm")

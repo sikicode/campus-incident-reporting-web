@@ -1,0 +1,54 @@
+#set( $title = "Contact" )
+#parse("public/top.vm")
+<head>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="../js/index.js"></script>
+  <script src="../js/incidents-daily.js"></script>
+  <script src="../js/visualization.js"></script>
+
+  <!-- for graph -->
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../css/custom.css"/>
+
+</head>
+#parse("public/navigation.vm")
+
+<body onload="checkIfLoggedIn3()">
+    <!--Grid column-->
+
+ <div  style=" padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 500px; margin: auto; text-align: center; font-family: arial; margin-top:60px;">
+   <p style="font-size: 24px">JHU Campus Safety and Security</p>
+   <p style="color: grey; font-size: 18px;">3001 Remington Ave, Baltimore, MD 21211</p>
+   <p>Mon - Fri, 8:00-22:00 <span id="status">Open</span></p>
+   <div style="margin: 24px 0;">
+     <a href="https://security.jhu.edu/"><i class="fa fa-dribbble"></i></a>
+   </div>
+
+   <p><a style="display: inline-block;
+   padding: 8px;
+   color: white;
+   background-color: #000;
+   text-align: center;" href="tel:+4105164600">+(410) 516-4600</a></p>
+
+ </div>
+</body>
+
+</section>
+
+  </head>
+  </HTML>

@@ -1,0 +1,117 @@
+#set( $title = "Incidents In A Month" )
+#parse("public/top.vm")
+<head>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="../js/index.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <script src="../js/visualization.js"></script>
+    <script src="../js/incidents-monthly.js"></script>
+
+    <!-- for graph -->
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/custom.css"/>
+</head>
+#parse("public/navigation.vm")
+
+<body onload="checkIfLoggedIn3(),checkIfLoggedIn4()">
+    <form>
+        <label>Choose the month you want to view:
+            <input id="picked_month" type="month">
+        </label>
+        <!-- preserve selected month-->
+        #if ($selected_month)
+            <script>
+                document.getElementById('picked_month').value = '$selected_month';
+            </script>
+        #end
+        <button type="button" refresh="false" id="visbutton" onclick="filterMonth()">Submit</button>
+    </form>
+    <div class="container">
+        <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+        #if ($types)
+            <!-- graph data-->
+            <p8 id="type1" >$types[0]</p8>
+            <p8 id="type2">$types[1]</p8>
+            <p8 id="type3">$types[2]</p8>
+            <p8 id="type4">$types[3]</p8>
+            <p8 id="type5">$types[4]</p8>
+            <p8 id="type6">$types[5]</p8>
+            <p8 id="type7">$types[6]</p8>
+            <p8 id="type8">$types[7]</p8>
+            <p8 id="type9">$types[8]</p8>
+        #end
+    </div>
+    <script>
+        visualization();
+    </script>
+
+    #if ($incidents)
+    <h2>All incidents in <span id="incident_month"></span>:</h2>
+        #if ($selected_month)
+        <script>
+            document.getElementById('incident_month').innerHTML = '$selected_month';
+        </script>
+        #end
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date And Time</th>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach($inc in $incidents)
+            <tr>
+                <td>$inc.dateAndTime</td>
+                <td>$inc.location</td>
+                <td>
+                    #if($inc.crimeCode == 1)
+                        Murder
+                    #elseif($inc.crimeCode == 2)
+                        Rape
+                    #elseif($inc.crimeCode == 3)
+                        Robbery
+                    #elseif($inc.crimeCode == 4)
+                        Assault
+                    #elseif($inc.crimeCode == 5)
+                        Burglary
+                    #elseif($inc.crimeCode == 6)
+                        Larceny
+                    #elseif($inc.crimeCode == 7)
+                        Auto Theft
+                    #elseif($inc.crimeCode == 8)
+                        Arson
+                    #elseif($inc.crimeCode == 9)
+                        Shooting
+                    #end
+                </td>
+                <td>$inc.description</td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+    #end
+
+</body>

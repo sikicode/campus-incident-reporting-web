@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>$title</title>
+    ## <link href="css/myjbapp.css" rel="stylesheet">
+         <meta name="google-signin-scope" content="profile email">
+
+         <meta name="google-signin-client_id" content="873266246787-gb5nqmcj9ojuibrujfrar5gpl3tgkgli.apps.googleusercontent.com">
+         <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
